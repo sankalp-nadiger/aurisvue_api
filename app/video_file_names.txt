@@ -25,6 +25,7 @@
 A bird in the hand is worth two in the bush.mp4
 A dime a dozen.mp4
 A penny saved is a penny earned.mp4
+A.mp4
 Aamir Khan (sign 2).mp4
 Accessible, Accessibility.mp4
 Accounts.mp4
@@ -63,6 +64,7 @@ Authentic, original.mp4
 Available.mp4
 Average, mediocre.mp4
 Award, prize.mp4
+B.mp4
 BMW.mp4
 BSNL.mp4
 Bajaj Bike.mp4
@@ -87,6 +89,7 @@ Buddhism, Buddhist (sign 2).mp4
 Bugs Bunny.mp4
 Burundi.mp4
 By the skin of one's teeth.mp4
+C.mp4
 CD.mp4
 Call it a day.mp4
 Cambodia.mp4
@@ -103,6 +106,7 @@ Communicate.mp4
 Curd.mp4
 Cut corners.mp4
 Cycle.mp4
+D.mp4
 Daily, Everyday.mp4
 Danger, hazard, peril.mp4
 Data, information, statistics.mp4
@@ -127,6 +131,7 @@ Draft.mp4
 Draw.mp4
 Drive.mp4
 Dustbin.mp4
+E.mp4
 Easy does it.mp4
 Education.mp4
 Egypt (sign 1).mp4
@@ -140,6 +145,7 @@ Ethics.mp4
 Everything.mp4
 Express Train.mp4
 Express.mp4
+F.mp4
 Factory.mp4
 Fashion, Style.mp4
 Fine (Punishment).mp4
@@ -147,6 +153,7 @@ Fine.mp4
 Forget.mp4
 Free.mp4
 Full.mp4
+G.mp4
 Gandhinagar.mp4
 Gangtok.mp4
 Garib Rath Express.mp4
@@ -174,6 +181,7 @@ Guru Nanak  Jayanti.mp4
 Guru Nanak.mp4
 Gurudwara sign 1.mp4
 Gurudwara sign 2.mp4
+H.mp4
 Haji Ali Dargah.mp4
 Hang in there.mp4
 Hanuman sign 1.mp4
@@ -186,6 +194,7 @@ Humid.mp4
 I don't know.mp4
 I understand.mp4
 I, me.mp4
+I.mp4
 Iceland.mp4
 Independence Day.mp4
 India Gate.mp4
@@ -211,6 +220,7 @@ Islam, Muslim (sign 2).mp4
 It's a piece of cake.mp4
 It's not rocket science.mp4
 It's raining cats and dogs.mp4
+J.mp4
 Jagannath Ratha Yatra.mp4
 Jainism, Jain.mp4
 Jaipur (sign 1).mp4
@@ -236,6 +246,7 @@ Judaism.mp4
 Juhu beach.mp4
 July.mp4
 June.mp4
+K.mp4
 Kali Mata (sign 1).mp4
 Kali Mata (sign 2).mp4
 Kannada (sign 1).mp4
@@ -251,12 +262,14 @@ Krishna.mp4
 Kumbh Mela (sign 1).mp4
 Kumbh Mela (sign 2).mp4
 Kuwait.mp4
+L.mp4
 LG Mobile.mp4
 Lenovo.mp4
 Let someone off the hook.mp4
 Liberia.mp4
 Libya.mp4
 Lotus Temple.mp4
+M.mp4
 Macau.mp4
 Madagascar.mp4
 Madhya Pradesh.mp4
@@ -279,10 +292,13 @@ Mauritius.mp4
 May.mp4
 Meghalaya (sign 1).mp4
 Meghalaya (sign 2).mp4
+N.mp4
+O.mp4
 Office.mp4
 Once.mp4
 OnePlus Mobile.mp4
 Ooty.mp4
+P.mp4
 Pakistan (sign 1).mp4
 Pakistan (sign 2).mp4
 Pakistan (sign 3).mp4
@@ -304,6 +320,8 @@ Process.mp4
 Projector.mp4
 Pull someone's leg.mp4
 Punish.mp4
+Q.mp4
+R.mp4
 Rabindranath Tagore.mp4
 Rajdhani Train (sign 1).mp4
 Rajdhani Train( sign 2).mp4
@@ -319,6 +337,7 @@ Royal Enfield.mp4
 Russia (sign 1).mp4
 Russia (sign 2).mp4
 Rwanda.mp4
+S.mp4
 SIM card.mp4
 Sachin Tendulkar.mp4
 Sai Baba.mp4
@@ -365,6 +384,7 @@ Swaziland.mp4
 Sweden.mp4
 Switzerland.mp4
 Syria.mp4
+T.mp4
 TATA Car.mp4
 TATA Mobile.mp4
 TVS Bike.mp4
@@ -392,6 +412,7 @@ Tunisia.mp4
 Turkey.mp4
 Twitter (sign 1).mp4
 Twitter (sign 2).mp4
+U.mp4
 Uganda.mp4
 Ukraine.mp4
 Umaid Bhawan Palace.mp4
@@ -409,6 +430,7 @@ Uruguay.mp4
 Uttar Pradesh.mp4
 Uttarakhand.mp4
 Uzbekistan.mp4
+V.mp4
 Vadodara.mp4
 Vaishno Devi.mp4
 Varanasi.mp4
@@ -423,6 +445,7 @@ Vivekananda Rock Memorial.mp4
 Vodafone.mp4
 Volkswagen (sign 1).mp4
 Volkswagen (sign 2).mp4
+W.mp4
 WAIT, HALT,�STAY.mp4
 Wait.mp4
 Wales.mp4
@@ -436,12 +459,15 @@ Wikipedia.mp4
 World Association of Sign Language Interpreters (WASLI).mp4
 World Federation of the Deaf (WFD).mp4
 World Federation of the Deaf Youth Section (WFDYS).mp4
+X.mp4
+Y.mp4
 Yahoo.mp4
 Yamaha Bike.mp4
 You can't judge a book by its cover.mp4
 YouTube.mp4
 Youth Association of the Deaf India (sign 1).mp4
 Youth Association of the Deaf India (sign 2).mp4
+Z.mp4
 Zambia.mp4
 Zimbabwe.mp4
 a lot.mp4

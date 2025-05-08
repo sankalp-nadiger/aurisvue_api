@@ -1,8 +1,32 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from .utils import preprocess_text, load_video_file_names, analyze_with_gemini
+from .utils import preprocess_text, load_video_file_names, analyze_with_gemini, analyze_with_openai, analyze_with_claude
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from fastapi.middleware.cors import CORSMiddleware
+import requests
+import ast
+import re
+import ollama
 
 app = FastAPI()
+
+
+origins = [
+    "http://localhost",
+    "http://localhost:5173",  # React frontend
+    "http://127.0.0.1:5100",  # Example: local file server
+    "https://yourdomain.com"  # Add your production domain
+]
+
+# Add the CORSMiddleware to FastAPI app
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,            # List of allowed origins
+    allow_credentials=True,
+    allow_methods=["*"],              # Allow all HTTP methods
+    allow_headers=["*"],              # Allow all headers
+)
 
 VIDEO_FILE_PATH = "app/video_file_names.txt"
 video_files = load_video_file_names(VIDEO_FILE_PATH)
@@ -18,3 +42,61 @@ def analyze_transcript(data: TranscriptInput):
         return {"videos": relevant}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/analyze_mistral/")
+def analyze_with_mistral(data: TranscriptInput):
+    print("Analyze mistral")
+    try:
+        prompt = f"""
+You're the fastest semantic search expert. Given the cleaned transcript:
+
+"{data.transcript}"
+
+Determine the most relevant videos from the list below using faster techniques and give response as fast you can (i.e., quickly narrow down using semantic decisions):
+
+{', '.join(video_files)}
+
+Return ONLY a Python list of filenames in this format:
+["video1.mp4", "video2.mp4"]
+Give only one file name for one word and if not matched then go letter by letter.
+"""
+
+        response = ollama.chat(
+            model="mistral",  # or any other installed local model
+            messages=[{"role": "user", "content": prompt}],
+            stream=False
+        )
+
+        content = response['message']['content']
+        match = re.search(r'\[(.*?)\]', content, re.DOTALL)
+        if match:
+            list_str = "[" + match.group(1) + "]"
+            parsed = ast.literal_eval(list_str)
+            return {"videos": [f for f in parsed if f in video_files]}
+        return {"videos": []}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/analyze_openai/")
+def analyze_with_openai_api(data: TranscriptInput):
+    print("Analyze OpenAI")
+    try:
+        relevant = analyze_with_openai(data.transcript, video_files)
+        return {"videos": relevant}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/analyze_claude/")
+def analyze_with_claude_api(data: TranscriptInput):
+    print("Analyze Claude")
+    try:
+        relevant = analyze_with_claude(data.transcript, video_files)
+        return {"videos": relevant}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
