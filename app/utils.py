@@ -68,21 +68,33 @@ def analyze_with_gemini(cleaned_text: str, video_files: list) -> list:
         return fallback_noun_video_selection(cleaned_text, video_files)
 
     prompt = f"""
-You are an expert in ultra-fast semantic search. Given the cleaned transcript below:
+You are an expert in ultra-fast semantic search. Your task is to identify the most relevant video filenames based on the provided transcript. 
 
-"{cleaned_text}"
+### Input Information:
+- **Transcript:**  
+  "{cleaned_text}"
 
-Your goal is to select the most relevant video filenames from the **sorted list** below:
+- **Video Filenames:**  
+  {', '.join(video_files)}
 
-{', '.join(video_files)}
+### Instructions:
+1. **Semantic Matching:**  
+   - Analyze the transcript to perform a semantic match against the video filenames and their content.
+   - Employ fast approximate matching techniques and utilize binary search strategies to optimize the search within the sorted list of video files.
 
-Instructions:
-1. Perform a **semantic match** between the transcript and the video filenames/content. Use fast approximate matching and optimize search using **binary search** techniques since the list is sorted.
-2. Try to find videos that match the **entire transcript** contextually or semantically.
-3. If no full-context matches are found, fall back to selecting videos that correspond to **individual letters or words** in the transcript give videos for each of the letters (e.g., A.mp4, B.mp4).
-4. Only return the most relevant videos (do not return all of them), formatted exactly like this:
+2. **Full-Context Matching:**  
+   - Aim to find video content that aligns completely with the transcript contextually and semantically.
 
-["video1.mp4", "video2.mp4"]
+3. **Fallback Strategy:**  
+   - In the event that no full-context matches are identified, revert to selecting videos that relate to individual letters or words present in the transcript. For instance, if the transcript contains 'A', include "A.mp4", and so forth for other letters or words
+   And while following this maintain the relative order of the letters that was given in teh {cleaned_text}.
+
+4. **Output Formatting:**  
+   - Ensure to return only the most relevant video filenames, formatted strictly as follows:  
+     `["video1.mp4", "video2.mp4"]`.
+
+### Expected Output:
+- A concise list of selected video filenames that adhere to the specified formatting requirements.  
 """
 
 
