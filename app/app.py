@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from .utils import preprocess_text, load_video_file_names, analyze_with_gemini, analyze_with_openai, analyze_with_claude
@@ -8,6 +9,9 @@ import requests
 import ast
 import re
 import ollama
+import hashlib
+import json
+
 
 app = FastAPI()
 
@@ -34,12 +38,36 @@ video_files = load_video_file_names(VIDEO_FILE_PATH)
 class TranscriptInput(BaseModel):
     transcript: str
 
+
+CACHE_DIR = "cache_json"
+os.makedirs(CACHE_DIR, exist_ok=True)
+
+def get_cache_path(transcript: str):
+    key = hashlib.sha256(transcript.strip().lower().encode()).hexdigest()
+    return os.path.join(CACHE_DIR, f"{key}.json")
+
+
 @app.post("/analyze/")
 def analyze_transcript(data: TranscriptInput):
     try:
-        # cleaned = preprocess_text(data.transcript)
+        cache_path = get_cache_path(data.transcript)
+
+        # If cache exists, use it
+        if os.path.exists(cache_path):
+            with open(cache_path, "r") as f:
+                return json.load(f)
+
+        # Otherwise generate
         relevant = analyze_with_gemini(data.transcript, video_files)
-        return {"videos": relevant}
+
+        result = {"videos": relevant}
+
+        # Save to cache
+        with open(cache_path, "w") as f:
+            json.dump(result, f)
+
+        return result
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -80,23 +108,23 @@ Give only one file name for one word and if not matched then go letter by letter
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.post("/analyze_openai/")
-def analyze_with_openai_api(data: TranscriptInput):
-    print("Analyze OpenAI")
-    try:
-        relevant = analyze_with_openai(data.transcript, video_files)
-        return {"videos": relevant}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+# @app.post("/analyze_openai/")
+# def analyze_with_openai_api(data: TranscriptInput):
+#     print("Analyze OpenAI")
+#     try:
+#         relevant = analyze_with_openai(data.transcript, video_files)
+#         return {"videos": relevant}
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.post("/analyze_claude/")
-def analyze_with_claude_api(data: TranscriptInput):
-    print("Analyze Claude")
-    try:
-        relevant = analyze_with_claude(data.transcript, video_files)
-        return {"videos": relevant}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+# @app.post("/analyze_claude/")
+# def analyze_with_claude_api(data: TranscriptInput):
+#     print("Analyze Claude")
+#     try:
+#         relevant = analyze_with_claude(data.transcript, video_files)
+#         return {"videos": relevant}
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
 
 
