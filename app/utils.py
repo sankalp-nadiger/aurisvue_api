@@ -94,7 +94,7 @@ You are an expert in ultra-fast semantic search. Your task is to identify the mo
      `["video1.mp4", "video2.mp4"]`.
 
 ### Expected Output:
-- A concise list of selected video filenames that adhere to the specified formatting requirements.  
+- A concise list of selected video filenames that adhere to the specified formatting requirements. Maintain the exact semantic sequence in transcript while generating the output. All words must be covered and the whole meaning must be conveyed.
 """
 
 
