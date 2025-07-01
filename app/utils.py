@@ -86,8 +86,8 @@ You are an expert in ultra-fast semantic search. Your task is to identify the mo
    - Aim to find video content that aligns completely with the transcript contextually and semantically.
 
 3. **Fallback Strategy:**  
-   - In the event that no full-context matches are identified, revert to selecting videos that relate to individual letters or words present in the transcript. For instance, if the transcript contains 'A', include "A.mp4", and so forth for other letters or words
-   And while following this maintain the relative order of the letters that was given in teh {cleaned_text}.
+   - In the event that no full-context matches are identified, revert to selecting videos that relate to individual words or letters present in the transcript. For instance, if the transcript contains 'A', include "A.mp4", and so forth for other words or letters
+   And while following this maintain the relative order of the letters that was given in the {cleaned_text}.
 
 4. **Output Formatting:**  
    - Ensure to return only the most relevant video filenames, formatted strictly as follows:  
