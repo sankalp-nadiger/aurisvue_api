@@ -15,18 +15,10 @@ import json
 
 app = FastAPI()
 
-
-origins = [
-    "http://localhost",
-    "http://localhost:5173",  # React frontend
-    "http://127.0.0.1:5100",  # Example: local file server
-    "https://yourdomain.com"  # Add your production domain
-]
-
 # Add the CORSMiddleware to FastAPI app
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,            # List of allowed origins
+    allow_origins=["*"],            # List of allowed origins
     allow_credentials=True,
     allow_methods=["*"],              # Allow all HTTP methods
     allow_headers=["*"],              # Allow all headers
